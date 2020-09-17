@@ -1,0 +1,9 @@
+body {
+    background-color: aliceblue;
+}
+
+.wrap {
+    max-width: 720px;
+    text-align: center;
+    margin: 0 auto;
+}
