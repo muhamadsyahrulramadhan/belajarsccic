@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Belajar weather</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Data OpenWeather</h1>
+    <pre id="result"></pre>
+    
+    <script>
+        $("#result").load("http://api.openweathermap.org/data/2.5/weather?q=Bandung&appid=2ad1844f1edf5971d91a0a8b5e872775");
+    </script>
+</body>
+</html>
