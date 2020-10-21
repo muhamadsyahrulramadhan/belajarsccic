@@ -8,26 +8,39 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
 <body>
-  <h2>Prakiraan Cuaca</h2><br></br>
-  <div>Id :</div>
-  <div id="id"></div><br>
+  <h2>Prakiraan Cuaca</h2></br>
   <div>Lokasi :</div>
-  <div id="location"></div><br>
-  <div>Zona Waktu :</div>
-  <div id="timezone"></div><br>
-  <div>Visibility :</div>
-  <div id="vsibility"></div><br>
+  <div id="loc"></div><br>
+  <div>Suhu :</div>
+  <div id="suhu"></div><br>
+  <div>Kelembapan :</div>
+  <div id="kelembapan"></div><br>
   <div>Cuaca :</div>
-  <div id="cuaca"></div>
-
+  <div id="cuaca"></div><br>
+  <div>Kecepatan Angin :</div>
+  <div id="angin"></div></br>
+  <div id="waktu"></div>
+  
   <script>
-      var url = "http://api.openweathermap.org/data/2.5/weather?q=Bandung&appid=2ad1844f1edf5971d91a0a8b5e872775";
+    var arrbulan = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+    var arrhari = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","sabtu"]
+    var date = new Date();
+    var hari = date.getDay();
+    var tanggal = date.getDate();
+    var bulan = date.getMonth();
+    var tahun = date.getFullYear();
+    $("#waktu").text(arrhari[hari]+", "+tanggal+" "+arrbulan[bulan]+" "+tahun);
+
+      var keyAPI = "2ad1844f1edf5971d91a0a8b5e872775";
+      var litsel = "-6.9";
+      var bujtim = "107.62";
+      var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + [litsel] + "&lon=" + [bujtim] + "&appid=" + [keyAPI];
       $.getJSON(url, function(data, status){
-          $("#id").text(data.id);
-          $("#location").text(data.name);
-          $("#timezone").text(data.timezone);
-          $("#vsibility").text(data.visibility);  
-          $("#cuaca").toArray(data.weather[2]);
+          $("#loc").text("Kota "+data.name);
+          $("#cuaca").text(data.weather[0].main);
+          $("#suhu").text(data.main.temp+" F");
+          $("#kelembapan").text(data.main.humidity+" F");
+          $("#angin").text(data.wind.speed+" km/jam");
       });
   </script>
 </body>
